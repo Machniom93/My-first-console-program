@@ -17,11 +17,33 @@ public class TaskManager {
     static String[][] tasks = new String[3][];
 
     public static void main(String[] args) {
-//        readTheDataAndPutItIntoArrayOfArraysTasks();
-//        showsListOfTasks();
-//        addingNewTaskToList();
-//        removingTaskFromList();
+        readTheDataAndPutItIntoArrayOfArraysTasks();
 
+        while (true) {
+            System.out.println("Please select an option: \nadd\nremove\nlist\n" + ConsoleColors.BLUE + "exit" + ConsoleColors.RESET);
+            Scanner scann = new Scanner(System.in);
+            String temporary = scann.nextLine().toLowerCase();
+            switch (temporary) {
+                case "add":
+                    addingNewTaskToList();
+                    break;
+                case "remove":
+                    removingTaskFromList();
+                    break;
+                case "list":
+                    showsListOfTasks();
+                    break;
+                case "exit":
+                    savingDataFromArrayToFile();
+                    break;
+                default:
+                    System.out.println("Please select a correct option.");
+            }
+            if (temporary.equals("exit")) {
+                System.out.println(ConsoleColors.RED + "Bye, bye.");
+                break;
+            }
+        }
     }
 
     public static void readTheDataAndPutItIntoArrayOfArraysTasks() {
@@ -57,6 +79,7 @@ public class TaskManager {
             System.out.println();
             counter ++;
         }
+        System.out.println();
     }
 
     public static void addingNewTaskToList() {
@@ -65,12 +88,13 @@ public class TaskManager {
         String taskDescription = scann.nextLine();
         System.out.println("Please add task due date");
         String taskDueDate = scann.nextLine();
-        System.out.println("Is your task important?: "+ ConsoleColors.RED + "true/false");
+        System.out.println("Is your task important?: " + ConsoleColors.RED + "true/false" + ConsoleColors.RESET);
         String isImportant = scann.nextLine();
         String joinedNewTask = String.join(", ",taskDescription,taskDueDate,isImportant);
         String[] arrayOfTheTask = joinedNewTask.split(", ");
         tasks = Arrays.copyOf(tasks,tasks.length+1);
         tasks[tasks.length-1] = arrayOfTheTask;
+        System.out.println();
     }
 
     public static void removingTaskFromList() {
@@ -90,6 +114,7 @@ public class TaskManager {
                 }
                 tasks = ArrayUtils.remove(tasks, tmp);
                 System.out.println("Value was successfully deleted.");
+                System.out.println();
                 break;
             } else {
                 System.out.println("Incorrect argument passed. Please give number greater or equal 0");
