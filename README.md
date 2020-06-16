@@ -8,7 +8,7 @@ After the program has finished the content of the file is changed to the current
 Untill you don't enter word: _"exit"_ program is running.
 ## How it works?
 You have four options to choose:
-1) add - you will be pleased to give a details of new task. Than this task will be added to your list of tasks;
+1) add - you will be asked to give a details of new task. Than this task will be added to your list of tasks;
 2) remove - you will have to provide a number of task wich you want to remove 
             (*so better, before you choose that option, select the option "list" to check what's number of task that you want remove*);
 3) list - task list will be displayed;
